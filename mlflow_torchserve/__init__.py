@@ -15,7 +15,6 @@ from mlflow.deployments import BaseDeploymentClient, get_deploy_client
 from mlflow.deployments import PredictionsResponse
 from mlflow.tracking.artifact_utils import _download_artifact_from_uri
 from mlflow.models.model import Model
-from mlflow.utils.proto_json_utils import NumpyEncoder, _get_jsonable_obj
 
 _logger = logging.getLogger(__name__)
 

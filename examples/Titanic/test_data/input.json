@@ -1,1 +1,1 @@
-{"input_file_path" : ["./test_data/titanic_survived.csv"]}
+{"input_file_path": ["/home/sasikumar/personal/mlflow/mlflow-torchserve/examples/Titanic/test_data/titanic_not_survived.csv"]}

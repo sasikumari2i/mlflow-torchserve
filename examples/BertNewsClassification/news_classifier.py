@@ -9,6 +9,7 @@ from collections import defaultdict
 
 import mlflow
 import numpy as np
+import requests
 import torch
 import torch.distributed as dist
 import torch.nn.functional as F
@@ -151,6 +152,14 @@ class NewsClassifier(nn.Module):
         """
         dataset = load_dataset("ag_news")
         num_train_samples = self.args["num_train_samples"]
+
+        if not os.path.isfile(self.VOCAB_FILE):
+            filePointer = requests.get(self.VOCAB_FILE_URL, allow_redirects=True)
+            if filePointer.ok:
+                with open(self.VOCAB_FILE, "wb") as f:
+                    f.write(filePointer.content)
+            else:
+                raise RuntimeError("Error in fetching the vocab file")
 
         num_val_samples = int(num_train_samples * 0.1)
         num_train_samples -= num_val_samples

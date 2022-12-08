@@ -30,9 +30,10 @@ class CIFAR10Classifier(
         self.optimizer = None
         self.args = kwargs
 
-        self.train_acc = Accuracy()
-        self.val_acc = Accuracy()
-        self.test_acc = Accuracy()
+        self.train_acc = Accuracy(task="multiclass", num_classes=10)
+        self.val_acc = Accuracy(task="multiclass", num_classes=10)
+        self.test_acc = Accuracy(task="multiclass", num_classes=10)
+
 
         self.preds = []
         self.target = []
